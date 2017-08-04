@@ -1,0 +1,52 @@
+    @mixin if-mobile-landscape {
+        @media (min-width: #{$mobile-landscape-width} + 1) {
+            @content;
+        }
+    }
+
+    @mixin if-mobile-portrait {
+        @media (max-width: #{$mobile-portrait-width}) {
+            @content;
+        }
+    }
+
+    @mixin if-mobile {
+        @include if-mobile-landscape {
+            @content;
+        }
+    }
+
+    @mixin if-tablet-landscape {
+        @media (min-width: #{$tablet-landscape-width}) {
+            @content;
+        }
+    }
+
+    @mixin if-tablet-portrait {
+        @media (min-width: #{$tablet-portrait-width}) {
+            @content;
+        }
+    } // $tablet-width: 990px;     // Bootstrap 3 default value
+    // Escrito por JR
+    @mixin if-tablet {
+        @media (min-width: #{$tablet-width}) and (max-width: #{$tablet-width - 1px}) {
+            @content;
+        }
+    }
+
+    @mixin if-desktop {
+        @media (min-width: #{$desktop-width}) {
+            @content;
+        }
+    } 
+    /*    @mixin if-tablet {
+        @include if-tablet-portrait() {
+            @content;
+        }
+    }
+
+    @mixin if-desktop {
+        @include if-tablet-landscape() {
+            @content;
+        }
+    }   */

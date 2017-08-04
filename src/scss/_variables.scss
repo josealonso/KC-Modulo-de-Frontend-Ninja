@@ -1,0 +1,44 @@
+// Cuando el nombre del fichero empieza por "_" --> no se compila y se llama "partial"
+// Font families
+$main-font-family: 'Zilla Slab', serif;
+$title-font-family: 'Bree Serif', serif;
+$body-font-family: $main-font-family;
+
+// Font sizes
+$font-size-base: 15px;
+$font-size-small: $font-size-base - 5px;
+$font-size-large: $font-size-base + 5px;
+$font-size-h1: $font-size-base + 15px;
+$font-size-h2: $font-size-base + 12px;
+$font-size-h3: $font-size-base + 9px;
+$font-size-h4: $font-size-base + 6px;
+$font-size-h5: $font-size-base + 3px;
+$font-size-h6: $font-size-base;
+
+// Base colors
+$color-amazing-39: #F8695B;
+$color-grastur: #17434E;
+$color-sidonia-orange: #FDAA10;
+$color-less-is-less: #EFF0EA;
+$color-silver: #DBDBDB;
+
+// Main components colors
+$main-text-color: $color-grastur;
+$links-color: $color-amazing-39;
+
+// Responsive
+$mobile-portrait-width: 375px;
+$mobile-landscape-width: 667px;
+$tablet-portrait-width: 768px;
+$tablet-landscape-width: 1024px;
+$tablet-width: 990px;     // Bootstrap 3 default value
+$desktop-width: 1200px;   // Bootstrap 3 default value
+
+// Form variables
+$form-input-border-color: $color-grastur;
+$form-input-outline-color: $color-grastur;
+$form-button-background-color: $color-grastur;
+$form-button-font-color: $color-less-is-less;
+$form-error-background-color: $color-amazing-39;
+$form-error-font-color: $color-less-is-less;
+

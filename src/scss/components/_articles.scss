@@ -1,0 +1,10 @@
+.main-container {
+    padding-left: 200px;
+    padding-right: 200px;
+    padding: 20px 200px; // $tablet-width: 990px;     // Bootstrap 3 default value
+    background-color: gold;
+    @media screen and (min-width: #{$tablet-width}) {
+        //and (max-width: #{$tablet-width - 1px}) {
+        background-color: lightblue;
+    }
+}
