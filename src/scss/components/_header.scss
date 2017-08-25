@@ -1,83 +1,174 @@
-    .web-header {
-        box-sizing: border-box;
-        background: white; //fade-out($color-grastur, 0.15);
-        //padding: 15px;
-        padding-left: 200px;
-        color: $color-silver;
-        /*position: fixed; */
-        top: 0px;
-        width: 100%;
-        transition: background 0.2s;
-        /* &:hover {
+.web-header {
+	box-sizing: border-box;
+	background: $main-background-color;
+	//background: fade-out($main-background-color, 0.15); ////////////
+	//padding-bottom: 5px;
+	//padding-left: 200px;
+	color: $secondary-text-color;
+	//position: fixed; /////////////
+	top: 0px;
+	width: 100%;
+	transition: background 0.2s;
+	/* &:hover {
         background: $color-grastur;
     } */
-        .web-title {
-            color: black;
-            font-size: $font-size-h3;
-            padding: 20px 0;
-        }
-        .top-container {
-            //padding-left: 200px;
-            font-size: $font-size-base;
-        } //.logo-container, footer {   // Por q no así?
-        .logo-container {
-            display: flex;
-            flex-direction: column;
-            @media screen and (min-width: #{$tablet-width}) {
-                flex-direction: row;
-            }
-            margin: 20px 0; //padding-left: 200px;
-            img {
-                max-width: 300px;
-                height: 45.5px;
-            }
-            .logo {
-                flex: 2; //align-self: flex-start;
-            }
-            .widgets {
-                flex: 2; //align-self: flex-end;
-            }
-            #search-box {
-                input[type=text] {
-                    width: 200px;
-                    height: 20px;
-                    transition: width 0.4s ease-in-out;
-                }
-                input[type=text]:focus {
-                    width: 300px;
-                }
-            }
-        }
-        .user {
-            top: 0px;
-            background-color: #F3F2ED; // TODO: centrar texto en el contenedor
-            width: 100%;
-            height: 35px;
-            display: flex;
-        }
-        .menu-container {
-            display: none;
-            @media screen and (min-width: #{$tablet-width}) {
-                display: block;
-            }
-            /*position: fixed; */
-            /*margin-left: 200px;*/
-            //padding-left: 200px;
-            //width: 100%;
-            background-color: #F7F7F7;
-            overflow: hidden;
-            a {
-                display: inline; // inline-block is similar, unless you narrow the screen
-                font-size: $font-size-large;
-                padding: 20px;
-                /*   IMP. --> para separar los elementos del menú */
-                text-decoration: none;
-                text-align: center;
-                transition: all 0.5s linear;
-            }
-            a:hover {
-                font-weight: bold;
-                background-color: #DDD;
-            }
-        }
-    }
+	.web-title {
+		color: $main-text-color;
+		font-size: $font-size-h4;
+		padding: 20px 10%;
+	}
+	.top-container {
+		//padding-left: 200px;
+		font-size: $font-size-base;
+	} //.logo-container, footer {   // Por q no así?
+	.logo-container {
+		padding-top: 20px;
+		display: flex;
+		flex-direction: column;
+		width: 90%;
+		margin: 0 auto; // Important !!
+		.logo-image img {
+			max-width: 95%;
+			height: 45.5px;
+		}
+		/*img {
+                max-width: 40%;
+                margin: auto;
+            } */
+		@media screen and (min-width: #{$tablet-width}) {
+			flex-direction: row;
+			margin: 20px 0;
+			padding-left: 100px;
+		}
+		.logo-image {
+			flex: 2; //align-self: flex-start;
+			margin: 0 auto;
+		}
+		.widgets {
+			flex: 2; //align-self: flex-end;
+		}
+		#search-box {
+			padding: 15px;
+			input[type=text] {
+				width: 70%;
+				margin: 5px auto;
+				height: 40px;
+				background-color: $main-background-color; //border-radius: 15%;
+				transition: width 0.4s ease-in-out;
+			}
+		} //End of #search-box
+		.categories-of-articles {
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: space-around;
+			margin: auto;
+			//align-items: baseline;
+			width: 70%;
+			height: 35px;
+			//padding-left: 15px;
+			//text-align: center;
+			//padding-bottom: 0;
+			border: 1px solid $main-border-color;
+			color: $main-text-color;
+			background-color: $secondary-background-color;
+			.categories-label {
+				//align-self: flex-start;
+				//text-align: center;
+				//padding-top: 5px;
+			}
+			#openmenu {
+				//align-self: flex-end;
+				display: inline-block; //block;
+				text-align: center;
+				//margin-right: 60%; //40px;
+				//margin-left: 25%; //55%; //40px;
+				//padding-left: 20px;
+				width: 35px;
+				height: 35px;
+				background-color: $main-button-color;
+				@media screen and (min-width: #{$tablet-width}) {
+					display: none;
+				}
+			}
+		} // End of .categories-of-articles
+	} // End of .logo-container
+
+	.user {
+		a {
+			padding-right: 10px;
+			margin-right: 10px;
+			border-right: 1px solid $main-border-color;
+			color: $search-text-color;
+			cursor: pointer;
+			font-family: $main-font-family;
+			font-size: $font-size-base;
+			line-height: 35px;
+			.fa {
+				padding-right: 7px;
+			}
+		}
+		top: 0px;
+		padding-left: 10%;
+		background-color: $main-background-color; // TODO: centrar texto en el contenedor
+		width: 100%;
+		height: 35px;
+	}
+	.menu-for-tablet-container {
+		display: none;
+	}
+	.menu-container {
+		// menu only for mobile
+		display: none;
+		padding: 20px;
+		a {
+			color: $main-menu-color;
+			display: inline; // inline-block is similar, unless you narrow the screen
+			font-size: $font-size-large;
+			//text-decoration: none;    // Ya está en "html-tags.scss"
+			text-align: center;
+		}
+		a:hover {
+			text-decoration: underline;
+			color: $main-background-color;
+		}
+		li {
+			padding: 1em;  /*   IMP. --> para separar los elementos del menú */
+		}
+	}
+}
+
+@media all and (min-width: #{$tablet-width}) {
+	body:before {
+		content: 'showHorizontalNavMenu'; // No envía ningún mensaje
+		display: none;
+	} //display: block;
+	.menu-container {
+		display: none;
+	}
+	.menu-for-tablet-container {
+		display: none;
+		padding: 20px;
+		a {
+			padding: 10px;
+			color: $main-menu-color;
+			display: inline; // inline-block is similar, unless you narrow the screen
+			font-size: $font-size-large;
+			/*   IMP. --> para separar los elementos del menú */
+			//text-decoration: none;    // Ya está en "html-tags.scss"
+			text-align: center;
+		}
+		li {
+			display: inline;
+		}
+		/*position: fixed; */
+		/*margin-left: 200px;*/
+		padding-left: 200px; //width: 100%;
+		//background-color: #F7F7F7;
+		transition: all 0.5s linear;
+		overflow: hidden;
+		a:hover {
+			font-weight: bold;
+			background-color: $hover-background-color;
+		}
+	}
+} // End of @media

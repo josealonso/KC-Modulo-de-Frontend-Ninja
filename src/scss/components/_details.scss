@@ -1,0 +1,67 @@
+.menu-container,
+#openmenu {
+	display: none;
+}
+
+.details-container {
+	display: flex;
+	flex-direction: column;
+	font-family: 'Lato', sans-serif;
+	font-size: 15px;
+	text-align: justify;
+	margin: auto;
+	/*    width: 80%;
+    padding: 15px;
+    background-color: #F3F2ED;
+    border: 1px solid #DDD; //padding-bottom: $main-vertical-separation;
+    flex: 1;
+    max-height: 230px;
+    max-width: 720px; */
+	line-height: 1.42em; // interlineado
+	.details-title-author {
+		text-transform: uppercase;
+		font-weight: bold;
+		text-align: center;
+		margin: auto;
+		width: 80%;
+		padding-top: $main-vertical-separation;
+		padding-bottom: $main-vertical-separation;
+	}
+	.details-photo-container {
+		//margin: auto;
+		text-align: center;
+		padding-top: $main-vertical-separation;
+		padding-bottom: $main-vertical-separation;
+		img {
+			width: 80%;
+			height: 90%;
+		}
+	}
+	.details-summary-container {
+		/*En estos párrafos se deberá mostrar algunas palabras en
+negrita, algunas en cursiva así como algún enlace.
+Además de estos componentes, antes del pie de página se deberá mostrar un sistema de
+comentarios que se detalla a continuación. */
+		width: 80%;
+		margin: auto;
+		padding-top: $main-vertical-separation;
+		padding-bottom: $main-vertical-separation;
+			p:first-child {
+			font-size: 24px; //font-weight: bold;
+		}
+        a {
+            text-decoration: underline;
+            color: $main-text-color;
+        } 
+	}
+
+	.details-comments-container {
+		width: 80%;
+		margin: auto;
+		padding-top: $main-vertical-separation;
+		padding-bottom: $main-vertical-separation;
+		p:first-child {
+			font-size: 24px;
+		}
+	}
+}

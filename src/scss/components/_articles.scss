@@ -1,10 +1,217 @@
-.main-container {
-    padding-left: 200px;
-    padding-right: 200px;
-    padding: 20px 200px; // $tablet-width: 990px;     // Bootstrap 3 default value
-    background-color: gold;
-    @media screen and (min-width: #{$tablet-width}) {
-        //and (max-width: #{$tablet-width - 1px}) {
-        background-color: lightblue;
-    }
+.divider-line {
+	//display: block;
+	//width: 50%;
+	//border-width: 0px; //border-bottom: $main-vertical-separation;
+	//background-color: green;
+	//border: 40px;
+}
+
+.articles-list {
+	.article-container {
+		//padding: 20px 200px; // $tablet-width: 990px;     // Bootstrap 3 default value
+		//background-color: gold;
+		background-color: $main-background-color;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		//margin: auto; //padding: 30px auto;
+		//padding-left: 10%;
+		//padding-right: 10%;
+		@media screen and (min-width: #{$tablet-width}) {
+			//and (max-width: #{$tablet-width - 1px}) {
+			flex-direction: row;
+			padding-left: 10%; //200px;
+			padding-right: 10%; //200px;
+		}
+
+		.hint {
+			width: 100%;
+			//height: 100%;
+		}
+
+		.article-photo {
+			//  Center aligning (margin: auto;) has no effect if the width property is not set (or set to 100%).
+			/*img {
+                align: middle;
+            }*/
+			flex: 1;
+			//width: 98%;
+			//margin: 0 auto;
+			text-align: center; // IMPORTANT !!
+			//align-content: center;
+			.article-image {
+				width: 160px; //50%;
+				height: 210px;
+				//margin: auto;
+			}
+
+			//padding-left: 10%;
+			//padding-right: 10%;
+			padding-top: $main-vertical-separation;
+			padding-bottom: $main-vertical-separation;
+			@media screen and (min-width: #{$tablet-width}) {
+				padding-right: $main-vertical-separation;
+				flex: 1;
+				img {
+					width: 130px;
+					height: 195px;
+				}
+			}
+		}
+
+		.title-author {
+			text-transform: uppercase; //padding-left: 10%;
+			//padding-right: 10%; //width: 90%;
+			margin: auto; // Important!!
+			width: 75%;
+			.title {
+				font-weight: bold;
+				padding-bottom: 10px;
+				text-align: center;
+			}
+			.author {
+				text-align: center;
+				padding-bottom: 20px;
+			}
+		}
+		.article-summary {
+			a {
+				color: $main-text-color;
+			}
+			flex: 1;
+			font-family: $main-font-family;
+			font-size: $font-size-base;
+			@media screen and (min-width: #{$tablet-width}) {
+				flex: 4;
+				max-width: 90%;
+				padding-top: $main-vertical-separation;
+				padding-right: $main-vertical-separation;
+			}
+			.summary-text {
+				text-align: justify;
+				margin: auto; // Important!!
+				width: 75%;
+				padding: $main-vertical-separation;
+				box-sizing: border-box;
+				background-color: $secondary-background-color;
+				border: 1px solid $other-border-color; //padding-bottom: $main-vertical-separation;
+				//max-height: 230px;
+				max-width: 720px;
+				line-height: $inter-line-space; // interlineado
+			}
+		}
+
+		.title-author {
+			color: $main-text-color;
+			@media screen and (min-width: #{$tablet-width}) {
+				padding-bottom: $main-vertical-separation;
+			}
+		}
+
+		.article-extras {
+			flex: 1;
+			box-sizing: border-box; // The default value is "content-box"
+			width: 75%;
+			margin: 0 auto; // No es necesario !!
+			//padding-left: 15%;
+			//padding-right: 15%;
+			padding: $main-vertical-separation+10 $main-vertical-separation;
+			@media screen and (min-width: #{$tablet-width}) {
+				flex: 1;
+				padding-left: 30px;
+			}
+			.date-of-publication {
+				width: 70%;
+				margin: 0 auto;
+				margin-bottom: 2 * $main-vertical-separation;
+				text-align: center;
+				background-color: $secondary-background-color;
+				padding: 5px;
+				border-radius: 15px;
+				button {
+					color: $main-on-button-text-color;
+					background-color: $secondary-button-color;
+					text-align: center;
+					margin: 0 auto;
+					// Since width has the default value, we don't need "margin: auto"
+				}
+			}
+			.like-me-button-div {
+				font-size: 15px;
+				color: $main-on-button-text-color;
+				//background-color: $main-text-color; // green;
+				//background-color: white;
+				width: 50%;
+				background-color: $main-button-color;
+				//margin: $main-vertical-separation;
+				//padding-bottom: $main-vertical-separation;
+				padding-top: 10px;
+				padding-bottom: 10px;
+				margin: $main-vertical-separation auto;
+				border-radius: 5%;
+				// Tenía margin: auto, lo q da 0 de márg. sup. e inferior, por eso se pegaba al siguiente botón
+				text-align: center;
+				cursor: pointer;
+				display: block; // Las clases de font-awesome cambian el valor de esta propiedad, lo cual impedía centrarlo
+				.like-me-button {
+					font-size: 15px;
+				}
+			}
+			.number-of-comments {
+				//button {
+				color: $main-on-button-text-color;
+				background-color: $main-button-color;
+				//padding-bottom: 50px; //$main-vertical-separation;
+				width: 50%;
+				margin: 0 auto; // "inherit" doesn't do the same thing !!
+				//box-sizing: border-box;
+				padding-top: 10px;
+				padding-bottom: 10px;
+				// It's equivalent to "margin: auto" !!
+				text-align: center;
+				cursor: pointer;
+				&:last-child {
+					margin-bottom: 10px; // space between the last button and the pagination system
+				}
+				//}
+			}
+		}
+	}
+}
+
+/*.fa-thumbs-up, .fa-thumbs-down {
+	padding-right: 5px;
+} */
+// "I like" feature
+.you-like {
+	background-color: red;
+}
+.you-dont-like {
+	background-color: $main-text-color;
+}
+/************************************************/
+
+.pagination {
+	//display: inline-block;    // No hace nada, creo
+	text-align: center;
+	ul {
+		li {
+			display: inline-block;
+			padding: 3%;
+			border-top: 1px solid $main-navigation-color;
+			&:hover {
+				//transform: scaleX(1.5);
+				border-top-color: $navigation-hover-color;
+				padding-left: 4%;
+				padding-right: 4%;
+				//$navigation-hover-color: #494949;
+			}
+			a {
+				color: $main-navigation-color;
+				&:hover {
+					color: $navigation-hover-color;
+				} // TODO ---> change this color on hovering the list element
+			}
+		}
+	}
 }
