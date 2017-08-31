@@ -1,8 +1,11 @@
 {
-  "name": "Proyecto-articulos-agosto-2017",
+  "name": "Proyecto_articulos_agosto2017",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "scripts": {
+    "server": "json-server --static ./dist --port 3100 comments.json"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -13,6 +16,7 @@
     "browser-sync": "^2.18.12",
     "browserify": "^14.4.0",
     "cssnano": "^3.10.0",
+    "font-awesome": "^4.7.0",
     "gulp": "^3.9.1",
     "gulp-buffer": "0.0.2",
     "gulp-html-import": "0.0.2",
@@ -28,6 +32,7 @@
     "postcss": "^6.0.8"
   },
   "dependencies": {
+    "hint.css": "^2.5.0",
     "jquery": "^3.2.1"
   }
 }
