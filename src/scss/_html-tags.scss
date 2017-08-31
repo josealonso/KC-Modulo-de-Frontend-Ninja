@@ -1,64 +1,70 @@
 body {
-    background: white; //$color-less-is-less;
-    font-family: $main-font-family;
-    font-size: $font-size-base;
-    color: $main-text-color;
-    overflow-x: hidden;
-   // padding-top: 10px;
-}
+	background: white; //$color-less-is-less;
+	font-family: $main-font-family;
+	font-size: $font-size-base;
+	color: $main-text-color;
+	overflow-x: hidden;
+	// padding-top: 10px;
+/*	@include if-mobile-landscape {
+		background: $color-amazing-39;
+	}
 
-a {
-    text-decoration: none;     // JR
-}
+	@include if-tablet-portrait {
+		background: $color-sidonia-orange;
+	} */
 
-form {
-    padding: 10px;
-}
+	@include if-mobile {
+		background: coral;
+	}
+	@include if-tablet {
+		background: gold;
+	}
 
-label,
-input,
-button {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-}
+	@include if-desktop {
+		background: lightblue;
+	}
+    
+	a {
+		text-decoration: none; // JR
+	}
 
-label {
-    font-size: small;
-    font-weight: bold;
-    text-transform: uppercase;
-}
+	form {
+		padding: 10px;
+	}
 
-input {
-    margin: 5px 0 15px 0;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid $form-input-border-color;
-    font-size: $font-size-base;
-    &:focus {
-        outline-color: $form-input-outline-color;
-    }
-}
+	label,
+	input,
+	button {
+		display: block;
+		width: 100%;
+		box-sizing: border-box;
+	}
 
-button {
-    @extend input;
-    background-color: $form-button-background-color;
-    color: $form-button-font-color;
-    font-weight: bold;
-    transition: all 0.25s;
-    &active {
-        background: lighten($form-button-background-color, 25%);
-    }
-}
+	label {
+		font-size: small;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
 
-@include if-mobile-landscape {
-    background: $color-amazing-39;
-}
+	input {
+		margin: 5px 0 15px 0;
+		padding: 10px;
+		border-radius: 5px;
+		border: 1px solid $form-input-border-color;
+		font-size: $font-size-base;
+		&:focus {
+			outline-color: $form-input-outline-color;
+		}
+	}
 
-@include if-tablet-portrait {
-    background: $color-sidonia-orange;
-}
-
-@include if-tablet-landscape {
-    background: $color-grastur;
+	button {
+		@extend input;
+		background-color: $form-button-background-color;
+		color: $form-button-font-color;
+		font-weight: bold;
+		transition: all 0.25s;
+		&active {
+			background: lighten($form-button-background-color, 25%);
+		}
+	}
 }

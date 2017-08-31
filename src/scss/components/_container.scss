@@ -1,0 +1,7 @@
+.container {
+    width: 100%;
+    @include if-desktop {
+        margin: 0 auto;  // centra el contenedor en el medio de la pantalla
+        width: 1024px;
+    }
+}

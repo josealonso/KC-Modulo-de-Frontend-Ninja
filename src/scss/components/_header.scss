@@ -12,17 +12,13 @@
 	/* &:hover {
         background: $color-grastur;
     } */
-	.web-title {
-		color: $main-text-color;
-		font-size: $font-size-h4;
-		padding: 20px 10%;
-	}
 	.top-container {
 		//padding-left: 200px;
 		font-size: $font-size-base;
 	} //.logo-container, footer {   // Por q no así?
-	.logo-container {
+	.header-container {
 		padding-top: 20px;
+        padding-bottom: 20px;		
 		display: flex;
 		flex-direction: column;
 		width: 90%;
@@ -91,7 +87,7 @@
 				}
 			}
 		} // End of .categories-of-articles
-	} // End of .logo-container
+	} // End of .header-container
 
 	.user {
 		a {

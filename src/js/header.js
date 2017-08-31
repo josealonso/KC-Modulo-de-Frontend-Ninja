@@ -1,5 +1,7 @@
 'use strict';
 
+console.log('This is header.js');
+
 let menu = document.getElementsByClassName("menu-container")[0]; // menu only for mobile
 let menuForTablet = document.getElementsByClassName("menu-for-tablet-container")[0];
 let navButton = document.getElementById("openmenu"); // the navButton is only shown for mobile viewports
@@ -18,11 +20,11 @@ navButton.addEventListener('click', function () {
 function checkForViewportChange() {
     //mq.addListener(WidthChange);
     if (tabletMq.matches) {
-        console.log("This is a TABLET !!");
+        //console.log("This is a TABLET !!");
         menuForTablet.style.display = 'block';
         menu.style.display = 'none';
     } else if (mobileMq.matches) {
-        console.log("This is a      MOBILE !!");
+        //console.log("This is a      MOBILE !!");
         menuForTablet.style.display = 'none';
         /*  navButton.addEventListener('click', function () {
               console.log("Comienzo SEGUNDO...");
@@ -52,5 +54,5 @@ window.addEventListener('resize', function () {
         // do something when viewport moves out of tablet mode
     }
     //  this.lastState = state;
-    //}
+    /}
 } */

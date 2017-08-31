@@ -7,6 +7,13 @@
 }
 
 .articles-list {
+	.web-title {
+		color: $main-text-color;
+		font-size: $font-size-h2;
+		font-weight: bold;
+		text-transform: uppercase;
+		//padding: 20px 10%;
+	}
 	.article-container {
 		//padding: 20px 200px; // $tablet-width: 990px;     // Bootstrap 3 default value
 		//background-color: gold;
@@ -17,12 +24,6 @@
 		//margin: auto; //padding: 30px auto;
 		//padding-left: 10%;
 		//padding-right: 10%;
-		@media screen and (min-width: #{$tablet-width}) {
-			//and (max-width: #{$tablet-width - 1px}) {
-			flex-direction: row;
-			padding-left: 10%; //200px;
-			padding-right: 10%; //200px;
-		}
 
 		.hint {
 			width: 100%;
@@ -121,20 +122,14 @@
 				padding-left: 30px;
 			}
 			.date-of-publication {
+				display: block; // Las clases de "hint.css" cambian el valor de esta propiedad, lo cual impedía centrarlo
 				width: 70%;
 				margin: 0 auto;
 				margin-bottom: 2 * $main-vertical-separation;
 				text-align: center;
-				background-color: $secondary-background-color;
+				background-color: $main-button-color; //$secondary-background-color;
 				padding: 5px;
 				border-radius: 15px;
-				button {
-					color: $main-on-button-text-color;
-					background-color: $secondary-button-color;
-					text-align: center;
-					margin: 0 auto;
-					// Since width has the default value, we don't need "margin: auto"
-				}
 			}
 			.like-me-button-div {
 				font-size: 15px;
@@ -148,11 +143,11 @@
 				padding-top: 10px;
 				padding-bottom: 10px;
 				margin: $main-vertical-separation auto;
-				border-radius: 5%;
+				//border-radius: 5%;
 				// Tenía margin: auto, lo q da 0 de márg. sup. e inferior, por eso se pegaba al siguiente botón
 				text-align: center;
 				cursor: pointer;
-				display: block; // Las clases de font-awesome cambian el valor de esta propiedad, lo cual impedía centrarlo
+				display: block; // Las clases de font-awesome/hint.css cambian el valor de esta propiedad, lo cual impedía centrarlo
 				.like-me-button {
 					font-size: 15px;
 				}
@@ -170,6 +165,7 @@
 				// It's equivalent to "margin: auto" !!
 				text-align: center;
 				cursor: pointer;
+				display: block; // Las clases de "hint.css" cambian el valor de esta propiedad, lo cual impedía centrarlo
 				&:last-child {
 					margin-bottom: 10px; // space between the last button and the pagination system
 				}
@@ -200,7 +196,7 @@
 			padding: 3%;
 			border-top: 1px solid $main-navigation-color;
 			&:hover {
-				//transform: scaleX(1.5);
+				transform: scaleX(1.5);
 				border-top-color: $navigation-hover-color;
 				padding-left: 4%;
 				padding-right: 4%;
@@ -208,10 +204,23 @@
 			}
 			a {
 				color: $main-navigation-color;
-				&:hover {
-					color: $navigation-hover-color;
-				} // TODO ---> change this color on hovering the list element
+				//&:hover {
+				//	color: $navigation-hover-color;
+				//} // TODO ---> change this color on hovering the list element
 			}
 		}
 	}
+}
+
+.pagination-active-li {
+	transform: scaleX(1.5);
+	border-top: 1px solid red; //$main-navigation-color;
+	//border-top-color: red;  //$navigation-hover-color;
+	padding-left: 4%;
+	padding-right: 4%;
+	//$navigation-hover-color: #494949;
+}
+
+.pagination-active-a {
+	color: red; //$navigation-hover-color;
 }

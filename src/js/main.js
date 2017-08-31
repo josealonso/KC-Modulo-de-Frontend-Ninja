@@ -11,6 +11,8 @@ window.$ = window.jQuery = require("jquery"); // Hace jQuery accesible públicam
 import * as footer from "./footer";
 import * as articles from "./articles";
 import * as header from "./header";
+import * as comments from "./comments";
+
 //import * from "./footer";   // Syntax error !!
 
 //console.log("This is MAIN.js !!");

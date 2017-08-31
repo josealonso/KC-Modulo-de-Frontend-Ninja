@@ -1,4 +1,9 @@
 <section class="articles-details">
+
+    <div class="web-title">
+        <p>Resumen detallado y críticas</p>
+    </div>
+
     <article class="details-container">
 
         <div class="details-title-author">
@@ -23,17 +28,43 @@
                 necesita apenas una pincelada para <strong>cautivar al lector</strong>, hacerlo reír y llorar, y conseguir que el asombro
                 ceda paso a la más profunda admiración por la serie.</p>
         </div>
+    
+    </article>
 
-        <div class="details-comments-container">
-            <p>57 críticas de los lectores</p> 
-            <hr class="details-divider-line">
-            <div class="details-space"></div>
-            <div class="details-space"></div>
-            <p>En la línea del autor, la saga atrapa, demasiada sangre para mi gusto porque no puedes cogerle cariño a un personaje
-                cuando se lo cargan. Pero es trepidante, emocionante, adictivo.
-            </p>
+    <hr>
+
+    <article class="comments-container" id="comments">
+     
+     <p class="comments-title">57 críticas de los lectores</p> 
+                <!-- <hr> -->
+            
+         <div class="comments-list loading">  <!-- Not sure !! -->
+     
+            <div class="ui-status empty">
+                No hay ningún comentario
+            </div>
+            <div class="ui-status error">
+                Se ha producido un error
+            </div>
+            <div class="ui-status loading">
+                Cargando...
+            </div>
+            <div class="ui-status ideal">
+            </div>
+
+         </div>
+            
+         <div class="comments-form">
+            <div class="comment-form-title">Deja tu comentario</div>
+            <form>
+                <input type="text" name="name" placeholder="Nombre">
+                <input type="text" name="lastName" placeholder="Apellidos">
+                <input type="text" name="email" placeholder="Correo">
+                <textarea rows="7" cols="30" placeholder="Escribe tu crítica"></textarea>
+                <button type="submit">Enviar</button>
+            </form>
         </div>
-
+    
     </article>
 
 </section>

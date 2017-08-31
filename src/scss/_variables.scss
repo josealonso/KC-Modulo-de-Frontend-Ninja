@@ -32,7 +32,7 @@ $search-text-color: #666;
 $main-on-button-text-color: $color-less-is-less;
 $main-menu-color: gray;
 
-$main-button-color: #00C020;
+$main-button-color: $main-menu-color;  // #00C020;
 $secondary-button-color: orange;
 
 $main-border-color: #CCC;
@@ -48,8 +48,8 @@ $navigation-hover-color: #1B1B1B;   // #494949;
 
 // Responsive
 $mobile-portrait-width: 375px;
-$mobile-landscape-width: 667px;
-$tablet-portrait-width: 768px;
+$mobile-landscape-width: 767px;  //667px;
+$tablet-portrait-width: $mobile-landscape-width + 1;  //768px;
 $tablet-landscape-width: 1024px;
 $tablet-width: 990px;     // Bootstrap 3 default value
 $desktop-width: 1200px;   // Bootstrap 3 default value
