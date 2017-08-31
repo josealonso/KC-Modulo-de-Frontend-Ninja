@@ -1,0 +1,22 @@
+{
+	"comments": [
+		{
+			"id": 1,
+			"author": "Pilar",
+			"photo": "img/female.png",
+			"text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ipsa tenetur error in laboriosam, enim eligendi! Ipsa, quos nostrum, ipsum obcaecati eaque quia, ex, id iusto ea aliquam labore molestias?"
+		},
+		{
+			"id": 2,
+			"author": "Animalista",
+			"photo": "img/duck.jpg",
+			"text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ipsa tenetur error in laboriosam, enim eligendi! Ipsa, quos nostrum, ipsum obcaecati eaque quia, ex, id iusto ea aliquam labore molestias?"
+		},
+		{
+			"id": 3,
+			"author": "Alberto",
+			"photo": "img/male.jpg",
+			"text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ipsa tenetur error in laboriosam, enim eligendi! Ipsa, quos nostrum, ipsum obcaecati eaque quia, ex, id iusto ea aliquam labore molestias?"
+		}
+	]
+}
