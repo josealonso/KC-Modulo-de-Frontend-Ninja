@@ -54,14 +54,33 @@
 
          </div>
             
-         <div class="comments-form">
-            <div class="comment-form-title">Deja tu comentario</div>
-            <form>
-                <input type="text" name="name" placeholder="Nombre">
-                <input type="text" name="lastName" placeholder="Apellidos">
-                <input type="text" name="email" placeholder="Correo">
-                <textarea rows="7" cols="30" placeholder="Escribe tu crítica"></textarea>
+            <div class="leave-a-comment">Deja tu comentario</div>
+         
+            <form novalidate class="comment-form"> 
+                
+                <div class="ui-status loading">Guardando comentario...</div>
+                <div class="ui-status error">Se ha producido un error</div>                
+
+                <div class="ui-status ideal">
+
+                <div class="form-control-group">                 
+                <label for="name">Nombre</label>
+                <input type="text" id="name" class="field" name="name" placeholder="Nombre" required>
+                </div> 
+
+                <div class="form-control-group">                 
+                <label for="lastName">Apellidos</label>
+                <input type="text" id="lastName" class="field" name="lastName" placeholder="Apellidos" required>
+                </div>
+
+                <div class="form-control-group">                 
+                <label for="email">Correo</label>
+                <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+                </div>
+
+                <textarea id="comment-text" class="field" rows="7" cols="30" placeholder="Escribe tu crítica" required></textarea>
                 <button type="submit">Enviar</button>
+                </div>
             </form>
         </div>
     

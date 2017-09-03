@@ -122,7 +122,7 @@ comentarios que se detalla a continuación. */
 				.user-info {
 					margin-bottom: 10px;
 					img {
-						display: block;   // An img is inline by default and inline element are not centered with "margin: auto"
+						display: block; // An img is inline by default and inline element are not centered with "margin: auto"
 						margin: auto;
 						border-radius: 50%;
 						width: 40px;
@@ -143,16 +143,42 @@ comentarios que se detalla a continuación. */
 				}
 			}
 		}
-		.comments-form {
-			.comment-form-title {
-				text-align: center;
-				//margin: 0 auto;
-				font-weight: bold;
-				color: $main-text-color;
-				font-size: $font-size-h3;
-				margin: 20px;
-				/*text-transform: uppercase;
+		.leave-a-comment {
+			text-align: center;
+			//margin: 0 auto;
+			font-weight: bold;
+			color: $main-text-color;
+			font-size: $font-size-h3;
+			margin: 20px;
+			/*text-transform: uppercase;
 				padding: 20px 10%;*/
+		}
+
+		.comment-form {
+			.ui-status {
+				&.error {
+					text-align: center;
+					background-color: red; ///
+					padding: 10px;
+					border-radius: 5px;
+					color: white; ///
+					margin-bottom: 10px;
+					display: none;
+				}
+				&.loading {
+					text-align: center;
+					margin-bottom: 10px;
+					display: none;
+				}
+			}
+			&.error .ui-status.error {
+				display: block;
+			}
+			&.loading .ui-status.loading {
+				display: block;
+			}
+
+			input {
 			}
 			button {
 				width: 50%;
@@ -160,6 +186,14 @@ comentarios que se detalla a continuación. */
 			textarea {
 				width: 80%;
 			}
+			@include if-tablet-landscape {
+				.form-control-group {
+					width: 50%;
+					display: inline-block;
+					box-sizing: border-box;
+					padding: 0 5px;
+				}
+			} // End of if-tablet
 		}
 	}
 }

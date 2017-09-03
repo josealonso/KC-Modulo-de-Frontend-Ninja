@@ -1,7 +1,7 @@
-const $ = require('jquery');  /* Esta línea no es obligatoria, de hecho
+const $ = require('jquery'); /* Esta línea no es obligatoria, de hecho
                                 Browserify solo importa jQuery una vez */
 export default class CommentsService {
-//export class CommentsService {
+	//export class CommentsService {
 	constructor(url) {
 		this.url = url;
 	}
@@ -17,8 +17,7 @@ export default class CommentsService {
 	save(comment, successCallback, errorCallback) {
 		if (comment.id) {
 			this.update(comment, successCallback, errorCallback);
-		}
-		else {
+		} else {
 			this.create(comment, successCallback, errorCallback);
 		}
 	}
@@ -33,10 +32,17 @@ export default class CommentsService {
 		});
 	}
 
-	getDetail(songId, successCallback, errorCallback) {}
-    
-	update(song) {}
+	getDetail(commentId, successCallback, errorCallback) {}
+
+	update(comment) {
+		$.ajax({
+			url: this.url,
+			method: 'put',
+			data: comment,
+			success: successCallback,
+			error: errorCallback
+		});
+	}
 
 	delete(commentId) {}
-
 }

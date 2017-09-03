@@ -1,8 +1,10 @@
 'use strict';
+window.$ = window.jQuery = require('jquery');
 
 //console.log('This is footer.js');
 let targetPage = '';
-let scrollIcon = document.getElementsByClassName('scroll')[0];
+//let scrollIcon = document.getElementsByClassName('scroll')[0];
+let scrollIcon = $('.scroll');
 
 if (document.getElementsByClassName('articles-list').length === 1) {
 	// Checks we are in the articles (main) page
@@ -15,12 +17,28 @@ if (document.getElementsByClassName('articles-details').length === 1) {
 }
 
 function goToTheTop(page) {
-	window.location.href = page;
+	let factor = page.endsWith('details.html') ? 0 : 2000;
+	$('html, body').animate(
+		{
+			scrollTop: 0 //window.location.href = page
+		},
+		800 + factor
+	);
+	//console.log('Animate método en ' + page);
 }
 
-scrollIcon.addEventListener('click', function() {
+$('.scroll').on('click', function() {
 	goToTheTop(targetPage);
 });
+
+/*	$('html, body').animate(
+		{
+			scrollTop: 0 //window.location.href = page
+		},
+		500
+	);
+		goToTheTop(targetPage);
+});  */
 
 /* document.addEventListener('scroll', function toggleButton() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
