@@ -44,5 +44,13 @@ export default class CommentsService {
 		});
 	}
 
-	delete(commentId) {}
+	delete(commentId) {
+		$.ajax({
+			url: this.url,
+			method: 'delete',
+			data: comment,
+			success: successCallback,
+			error: errorCallback
+		});
+	}
 }

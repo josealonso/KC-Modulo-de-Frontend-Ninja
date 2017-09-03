@@ -41,6 +41,12 @@
 		@content;
 	}
 }
+
+@mixin if-tablet-or-desktop {
+	@media screen and (min-width: #{$tablet-width}) {
+		@content;
+	}
+}
 /*    @mixin if-tablet {
         @include if-tablet-portrait() {
             @content;

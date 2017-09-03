@@ -1,7 +1,3 @@
-.menu-container,
-#openmenu {
-	display: none;
-}
 
 .articles-details {
 	font-family: 'Lato', sans-serif;
@@ -10,9 +6,10 @@
 
 	.web-title {
 		color: $main-text-color;
-		font-size: $font-size-h2;
+		font-size: $font-size-h3;
 		font-weight: bold;
 		text-transform: uppercase;
+		line-height: 1.4;
 		padding: 20px 10%;
 	}
 
@@ -21,13 +18,6 @@
 		flex-direction: column;
 		text-align: justify;
 		margin: auto;
-		/*    width: 80%;
-    padding: 15px;
-    background-color: #F3F2ED;
-    border: 1px solid #DDD; //padding-bottom: $main-vertical-separation;
-    flex: 1;
-    max-height: 230px;
-    max-width: 720px; */
 		.details-title-author {
 			text-transform: uppercase;
 			font-weight: bold;
@@ -43,15 +33,11 @@
 			padding-top: $main-vertical-separation;
 			padding-bottom: $main-vertical-separation;
 			img {
-				width: 80%;
-				height: 90%;
+				width: 50%;
+				height: 60%;
 			}
 		}
 		.details-summary-container {
-			/*En estos párrafos se deberá mostrar algunas palabras en
-negrita, algunas en cursiva así como algún enlace.
-Además de estos componentes, antes del pie de página se deberá mostrar un sistema de
-comentarios que se detalla a continuación. */
 			width: 80%;
 			margin: 0 auto;
 			padding-top: $main-vertical-separation;
@@ -71,14 +57,10 @@ comentarios que se detalla a continuación. */
 		margin: 0 auto;
 		padding-top: $main-vertical-separation;
 		padding-bottom: $main-vertical-separation;
-		/*p:first-child {
-			font-size: 24px;
-		} */
 		.comments-title {
 			font-size: 24px;
 			margin: 10px;
 			margin-bottom: 20px;
-			display: none;
 		}
 		.comments-list {
 			display: flex;
@@ -118,16 +100,26 @@ comentarios que se detalla a continuación. */
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
+				padding: 20px;
 				margin-bottom: 20px;
+				&:nth-child(odd) {
+					background-color: $secondary-background-color;
+				}
+				@include if-tablet-or-desktop {
+					flex-direction: row;
+				}
 				.user-info {
-					margin-bottom: 10px;
+					margin-bottom: 15px;
 					img {
-						display: block; // An img is inline by default and inline element are not centered with "margin: auto"
+						display: block; // An img is inline by default and inline elements are not centered with "margin: auto"
 						margin: auto;
 						border-radius: 50%;
 						width: 40px;
 						height: 40px;
 						padding: 10px;
+						@include if-tablet-or-desktop {
+							padding: 10px 70px 20px 70px;
+						}
 					}
 					span {
 						font-weight: bold;
@@ -139,7 +131,10 @@ comentarios que se detalla a continuación. */
 				}
 				.content {
 					margin: auto;
-					text-align: center;
+					text-align: left;
+					@include if-tablet-or-desktop {
+						padding-left: 20px;
+					}
 				}
 			}
 		}
@@ -150,8 +145,6 @@ comentarios que se detalla a continuación. */
 			color: $main-text-color;
 			font-size: $font-size-h3;
 			margin: 20px;
-			/*text-transform: uppercase;
-				padding: 20px 10%;*/
 		}
 
 		.comment-form {
@@ -182,18 +175,19 @@ comentarios que se detalla a continuación. */
 			}
 			button {
 				width: 50%;
+				max-width: 200px;
 			}
 			textarea {
 				width: 80%;
 			}
-			@include if-tablet-landscape {
+			@include if-tablet-or-desktop {
 				.form-control-group {
 					width: 50%;
 					display: inline-block;
 					box-sizing: border-box;
 					padding: 0 5px;
 				}
-			} // End of if-tablet
+			} // End of if-tablet-or-desktop
 		}
 	}
 }

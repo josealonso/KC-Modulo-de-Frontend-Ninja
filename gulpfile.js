@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var sass = require('gulp-sass'); // Esta variable tenía una letra mal, se llamaba "scss" !!
+var sass = require('gulp-sass'); 
 var notify = require('gulp-notify');
 var browserSync = require('browser-sync').create();
 var gulpImport = require('gulp-html-import'); // permite usar @import en html // "gulp-copy" es más fácil
@@ -12,13 +12,15 @@ var uglify = require('gulp-uglify');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var cssnano = require('cssnano');
+var imagemin = require('gulp-imagemin');
+var responsive = require('gulp-responsive');
 
 gulp.task('default', [ 'html', 'sass', 'img', 'video', 'js', 'fonts' ], function() {
 	// En el arranque, se ejecutan esas 5 tareas antes de "default"
 	//gulp.task("default", ["html", "js"], function () {
 	browserSync.init({
 		//server: 'dist/' // Cuidado, ponía "src" y luego "./dist"
-		proxy: "http://127.0.0.1/3100/"    // Por defecto, es el puerto 3000
+        proxy: 'http://127.0.0.1:3100/' // Por defecto, es el puerto 3000
 	});
 	gulp.watch([ 'src/scss/*.scss', 'src/scss/**/*.scss' ], [ 'sass' ]);
 	gulp.watch([ 'src/js/*.js', 'src/js/**/*.js' ], [ 'js' ]);
@@ -35,7 +37,7 @@ gulp.task('sass', function() {
 				return notify().write(error); // si ocurre un error, mostramos una notificación
 			})
 		)
-		.pipe(postcss([ autoprefixer(), cssnano() ]))  // cssnano comprime/minifica el CSS
+		.pipe(postcss([ autoprefixer(), cssnano() ])) // cssnano comprime/minifica el CSS
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('dist/'))
 		.pipe(browserSync.stream());
@@ -52,7 +54,8 @@ gulp.task('html', function() {
 		.src('src/*.html')
 		.pipe(gulpImport('src/components/'))
 		.pipe(
-			htmlmin({   // minifica el HTML
+			htmlmin({
+				// minifica el HTML
 				collapseWhitespace: true
 			})
 		)
@@ -63,13 +66,13 @@ gulp.task('html', function() {
 
 gulp.task('js', function() {
 	gulp
-		.src([ 'src/js/main.js' ]) //, "src/js/**/*.js"])
+		.src([ 'src/js/main.js' ]) 
 		.pipe(
 			tap(function(file) {
 				// tap nos permite ejecutar una función por cada fichero seleccionado en gulp.src
 				// reemplazamos el contenido del fichero por lo que nos devuelve browserify pasándole el fichero (main.js)
 				file.contents = browserify(file.path, {
-					debug: true   // genera los "source maps"
+					debug: true // genera los "source maps"
 				}) // creamos una instancia de browserify en base al archivo
 					.transform('babelify', {
 						presets: [ 'es2015' ]
@@ -97,15 +100,15 @@ gulp.task('js', function() {
 // tarea que optimiza y crea las imágenes responsive
 gulp.task('img', function() {
 	gulp
-		.src('src/img/*')
-		/*     .pipe(responsive({ // generamos las versiones responsive
-                 '*': [
+		.src('src/img/someone.png')
+		     .pipe(responsive({ // generamos las versiones responsive
+                 'someone.png': [
                      { width: 150, rename: { suffix: "-150px"}},
                      { width: 250, rename: { suffix: "-250px"}},
                      { width: 300, rename: { suffix: "-300px"}}
                  ]
-             }))
-             .pipe(imagemin()) // optimizamos el peso de las imágenes */
+             })) 
+		.pipe(imagemin()) // optimizamos el peso de las imágenes
 		.pipe(gulp.dest('dist/img/'));
 });
 

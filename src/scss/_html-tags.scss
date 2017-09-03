@@ -1,19 +1,12 @@
 body {
-	background: white; //$color-less-is-less;
+	background: $main-background-color;
 	font-family: $main-font-family;
 	font-size: $font-size-base;
 	color: $main-text-color;
 	overflow-x: hidden;
 	// padding-top: 10px;
-	/*	@include if-mobile-landscape {
-		background: $color-amazing-39;
-	}
 
-	@include if-tablet-portrait {
-		background: $color-sidonia-orange;
-	} */
-
-	@include if-mobile {
+	/*@include if-mobile {
 		background: coral;
 	}
 	@include if-tablet {
@@ -22,7 +15,7 @@ body {
 
 	@include if-desktop {
 		background: lightblue;
-	}
+	}  */
 
 	a {
 		text-decoration: none; // JR

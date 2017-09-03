@@ -4,7 +4,9 @@ window.$ = window.jQuery = require('jquery');
 //console.log('This is footer.js');
 let targetPage = '';
 //let scrollIcon = document.getElementsByClassName('scroll')[0];
-let scrollIcon = $('.scroll');
+let $scrollIcon = $('.scroll');
+
+/*****************************************************************/
 
 if (document.getElementsByClassName('articles-list').length === 1) {
 	// Checks we are in the articles (main) page
@@ -24,31 +26,29 @@ function goToTheTop(page) {
 		},
 		800 + factor
 	);
-	//console.log('Animate método en ' + page);
 }
 
-$('.scroll').on('click', function() {
+$scrollIcon.on('click', function() {
 	goToTheTop(targetPage);
 });
 
-/*	$('html, body').animate(
-		{
-			scrollTop: 0 //window.location.href = page
-		},
-		500
-	);
-		goToTheTop(targetPage);
-});  */
+/*****************************************************************/
+const tabletPortraitMq = window.matchMedia('(min-width: 768px)');
 
-/* document.addEventListener('scroll', function toggleButton() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        document.getElementById("btnToTop").style.display = "block";
-        //$("#btnToTop").style.display = "block";
-    } else {
-        document.getElementById("btnToTop").style.display = "none";
-    }
-}); */
+// Using the API window.matchMedia to respond to CSS3 media query state changes within JavaScript
+function checkForViewportChange() {
+	if (tabletPortraitMq.matches) {
+		//console.log("This is a TABLET !!");
+		$scrollIcon.addClass('fa-2x');
+	} else {
+		$scrollIcon.removeClass('fa-2x');
+	}
+}
 
-/* document.getElementById("btnToTop").addEventListener('click', function moveToTheTop() {
-    window.scrollTo(0, 0);
-}); */
+window.addEventListener(
+	'resize',
+	function() {
+		checkForViewportChange();
+	},
+	false
+);

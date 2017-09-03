@@ -2,23 +2,16 @@
 	box-sizing: border-box;
 	background: $main-background-color;
 	//background: fade-out($main-background-color, 0.15); ////////////
-	//padding-bottom: 5px;
-	//padding-left: 200px;
 	color: $secondary-text-color;
-	//position: fixed; /////////////
 	top: 0px;
 	width: 100%;
 	transition: background 0.2s;
-	/* &:hover {
-        background: $color-grastur;
-    } */
 	.top-container {
-		//padding-left: 200px;
 		font-size: $font-size-base;
-	} //.logo-container, footer {   // Por q no así?
-	.header-container {
+	}
+	.header-main-container {
 		padding-top: 20px;
-        padding-bottom: 20px;		
+		padding-bottom: 20px;
 		display: flex;
 		flex-direction: column;
 		width: 90%;
@@ -27,10 +20,6 @@
 			max-width: 95%;
 			height: 45.5px;
 		}
-		/*img {
-                max-width: 40%;
-                margin: auto;
-            } */
 		@media screen and (min-width: #{$tablet-width}) {
 			flex-direction: row;
 			margin: 20px 0;
@@ -61,33 +50,36 @@
 			//align-items: baseline;
 			width: 70%;
 			height: 35px;
-			//padding-left: 15px;
-			//text-align: center;
-			//padding-bottom: 0;
+			//@include if-tablet-or-desktop {
+			@media (min-width: 990px) {
+				display: none;
+			}
 			border: 1px solid $main-border-color;
 			color: $main-text-color;
 			background-color: $secondary-background-color;
 			.categories-label {
-				//align-self: flex-start;
-				//text-align: center;
-				//padding-top: 5px;
+				padding-top: 10px;
 			}
+			// Botón del menú móvil
 			#openmenu {
-				//align-self: flex-end;
 				display: inline-block; //block;
 				text-align: center;
 				//margin-right: 60%; //40px;
 				//margin-left: 25%; //55%; //40px;
-				//padding-left: 20px;
+				//padding-bottom: 20px;
 				width: 35px;
 				height: 35px;
 				background-color: $main-button-color;
-				@media screen and (min-width: #{$tablet-width}) {
+				//		@include if-tablet-or-desktop {
+				@media (min-width: 990px) {
 					display: none;
+				}
+				.icon {
+					padding: 10px;
 				}
 			}
 		} // End of .categories-of-articles
-	} // End of .header-container
+	} // End of .header-main-container
 
 	.user {
 		a {
@@ -105,66 +97,87 @@
 		}
 		top: 0px;
 		padding-left: 10%;
-		background-color: $main-background-color; // TODO: centrar texto en el contenedor
+		background-color: $main-background-color;
 		width: 100%;
 		height: 35px;
 	}
-	.menu-for-tablet-container {
-		display: none;
-	}
+	// menu only for mobile
 	.menu-container {
-		// menu only for mobile
 		display: none;
 		padding: 20px;
-		a {
-			color: $main-menu-color;
-			display: inline; // inline-block is similar, unless you narrow the screen
-			font-size: $font-size-large;
-			//text-decoration: none;    // Ya está en "html-tags.scss"
-			text-align: center;
-		}
-		a:hover {
-			text-decoration: underline;
-			color: $main-background-color;
-		}
 		li {
-			padding: 1em;  /*   IMP. --> para separar los elementos del menú */
+			padding: 1em; /*   IMP. --> para separar los elementos del menú */
+			&:hover {
+				transform: scaleY(1.4);
+				background-color: $main-text-color;
+				text-align: center;
+			}
+			a {
+				color: $main-menu-color;
+				display: inline; // inline-block is similar, unless you narrow the screen
+				font-size: $font-size-large;
+				//text-decoration: none;    // Ya está en "html-tags.scss"
+				text-align: center;
+			}
 		}
 	}
 }
 
-@media all and (min-width: #{$tablet-width}) {
-	body:before {
-		content: 'showHorizontalNavMenu'; // No envía ningún mensaje
-		display: none;
-	} //display: block;
-	.menu-container {
-		display: none;
-	}
+@media (max-width: 990px) {
 	.menu-for-tablet-container {
 		display: none;
+	}
+}
+
+@media (min-width: 990px) {
+	//@include if-tablet-or-desktop {
+	.menu-for-tablet-container {
+		display: inline;
 		padding: 20px;
-		a {
-			padding: 10px;
-			color: $main-menu-color;
-			display: inline; // inline-block is similar, unless you narrow the screen
-			font-size: $font-size-large;
-			/*   IMP. --> para separar los elementos del menú */
-			//text-decoration: none;    // Ya está en "html-tags.scss"
-			text-align: center;
-		}
-		li {
-			display: inline;
-		}
-		/*position: fixed; */
-		/*margin-left: 200px;*/
-		padding-left: 200px; //width: 100%;
-		//background-color: #F7F7F7;
-		transition: all 0.5s linear;
-		overflow: hidden;
-		a:hover {
-			font-weight: bold;
-			background-color: $hover-background-color;
+		ul {
+			margin-left: 6%;
+			//text-align: center;
+			a {
+				padding: 10px;
+				color: $main-menu-color;
+				display: inline; // inline-block is similar, unless you narrow the screen
+				font-size: $font-size-large;
+				text-align: center;
+			}
+			li {
+				display: inline;
+				padding-right: 4%; //10px;
+			}
+			padding-left: 200px; //width: 100%;
+			transition: all 0.5s linear;
+			overflow: hidden;
+			a:hover {
+				font-weight: bold;
+				background-color: $hover-background-color;
+			}
 		}
 	}
+	.non-mobile-categories-label {
+		display: block;
+		width: 80%;
+		margin: 0 auto;
+		padding: 10px 0px 10px 0px;
+		border: 1px solid $main-border-color;
+		color: $main-text-color;
+		background-color: $secondary-background-color;
+		margin-bottom: 10px;
+	}
+	.categories-label {
+		display: block;
+		//margin: 0 auto;
+		text-align: center;
+		font-weight: bold;
+		font-size: 17px;
+	}
 } // End of @media
+
+.non-mobile-categories-label .categories-label {
+	@media all and (max-width: 990px) {
+		display: none;
+	}
+}

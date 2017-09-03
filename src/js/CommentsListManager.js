@@ -1,5 +1,7 @@
 const $ = require('jquery');
 
+let $commentsHeader = $('.comments-title'); // Line with the number of comments
+
 export default class CommentsListManager {
 	constructor(commentsService, uiManager, pubSub) {
 		this.commentsService = commentsService;
@@ -23,14 +25,16 @@ export default class CommentsListManager {
 				if (comments.length === 0) {
 					this.uiManager.setEmpty();
 				} else {
+					//$commentsHeader.html(`${comments.length} críticas de lectores`);
+					let word = comments.length === 1 ? "crítica" : "críticas";
+					$commentsHeader.text(`${comments.length} ${word} de los lectores`);
 					// Compose the HTML for all the comments
 					this.renderComments(comments);
-
-					$('.comments-title').show(); // TODO
 					this.uiManager.setIdeal();
 				}
 			},
 			(error) => {
+				$commentsHeader.text('Error al cargar los comentarios');
 				this.uiManager.setError();
 				console.log('Error al cargar los comentarios');
 			}
@@ -48,15 +52,21 @@ export default class CommentsListManager {
 	}
 
 	renderComment(comment) {
-		//		if (!comment.photo) { console.log("There's NO photo !!"); }
+		let photo = comment.photo;
+		let srcset = "";
+		if (photo == "" || !photo) {
+			//console.log("There's NO photo !!");
+			photo = "dist/img/someone-150px.png";
+			srcset = ' srcset="img/someone-150px.png 150w, img/someone-250px.png 250w, img/someone-300px.png 300w"';
+		}
+
 		return `<div class="comment" id="comment-${comment.id}">
                     <div class="user-info">
-					    <img src="${comment.photo}" alt="">
+					    <img src="${photo}" alt="Foto de ${comment.author}" ${srcset}>
 						<span>${comment.author}</span>
                     </div>
                     <div class="content">
-                        <p>${comment.text}
-                        </p>                 
+                        <p>${comment.text}</p>                 
                     </div>
                 </div>`;
 	}

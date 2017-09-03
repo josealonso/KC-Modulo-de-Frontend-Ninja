@@ -52,7 +52,7 @@ export default class CommentFormManager extends UIManager {
 		if (this.isValid()) {
 			this.send();
 		}
-		return false; // == evment.preventDefault();
+		return false; // == event.preventDefault();
 	}
 
 	isValid() {
@@ -80,18 +80,18 @@ export default class CommentFormManager extends UIManager {
 			author: this.element.find('#name').val() + ' ' + this.element.find('#lastName').val(),
 			email: this.element.find('#email').val(),
 			text: this.element.find('#comment-text').val(),
-			photo: 'img/someone.png'
+			photo: ""
 		};
 		// Emit a "new comment" event (publication)
 		this.commentsService.save(
 			// TODO: reload the list of comments
+
 			// El patrón PubSub permite tener elementos desacoplados, no hay que inyectar dependencias.
 			// El elemento común es el canal de subscripción.
-			// Los suscriptores de un mismo evento son independiente e- sí (asíncrono). Reciben la información publicada por 
-			//event.publish();
+			// Los suscriptores de un mismo evento son independiente e- sí (asíncrono). Reciben la información publicada.
 			comment,
-			(success) => {  
-				PubSub.publish("new-comment", comment);  // publish the event reporting the creation of a comment
+			(success) => {
+				PubSub.publish('new-comment', comment); // publish the event reporting the creation of a comment
 				this.resetForm(); // clear the form
 				this.setIdeal();
 			},

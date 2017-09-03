@@ -1,29 +1,28 @@
-.divider-line {
-	//display: block;
-	//width: 50%;
-	//border-width: 0px; //border-bottom: $main-vertical-separation;
-	//background-color: green;
-	//border: 40px;
-}
-
 .articles-list {
 	.web-title {
 		color: $main-text-color;
-		font-size: $font-size-h2;
+		font-size: $font-size-h4;
 		font-weight: bold;
 		text-transform: uppercase;
-		//padding: 20px 10%;
+		margin: 20px 0 20px 10%;
 	}
 	.article-container {
-		//padding: 20px 200px; // $tablet-width: 990px;     // Bootstrap 3 default value
-		//background-color: gold;
+		// $tablet-width: 990px;     // Bootstrap 3 default value
 		background-color: $main-background-color;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		//margin: auto; //padding: 30px auto;
-		//padding-left: 10%;
-		//padding-right: 10%;
+		@include if-tablet-or-desktop {
+			flex-direction: row;
+			min-width: 900px;
+			width: 100%;
+			.central-column {
+				//width: 100%;
+				display: flex;
+				flex-direction: column;
+				margin-right: 0;
+			}
+		}
 
 		.hint {
 			width: 100%;
@@ -36,43 +35,42 @@
                 align: middle;
             }*/
 			flex: 1;
-			//width: 98%;
-			//margin: 0 auto;
 			text-align: center; // IMPORTANT !!
+			@include if-tablet-or-desktop {
+				padding-left: 15%;
+			}
 			//align-content: center;
 			.article-image {
-				width: 160px; //50%;
-				height: 210px;
-				//margin: auto;
+				width: 160px;
+				height: 220px;
 			}
 
-			//padding-left: 10%;
-			//padding-right: 10%;
 			padding-top: $main-vertical-separation;
 			padding-bottom: $main-vertical-separation;
-			@media screen and (min-width: #{$tablet-width}) {
-				padding-right: $main-vertical-separation;
-				flex: 1;
-				img {
-					width: 130px;
-					height: 195px;
-				}
-			}
 		}
 
 		.title-author {
-			text-transform: uppercase; //padding-left: 10%;
-			//padding-right: 10%; //width: 90%;
+			text-transform: uppercase;
 			margin: auto; // Important!!
 			width: 75%;
+			@include if-tablet-or-desktop {
+				padding-top: 20px;
+			}
+
 			.title {
 				font-weight: bold;
 				padding-bottom: 10px;
 				text-align: center;
+				@include if-tablet-or-desktop {
+					text-align: left;
+				}
 			}
 			.author {
 				text-align: center;
 				padding-bottom: 20px;
+				@include if-tablet-or-desktop {
+					text-align: left;
+				}
 			}
 		}
 		.article-summary {
@@ -82,11 +80,8 @@
 			flex: 1;
 			font-family: $main-font-family;
 			font-size: $font-size-base;
-			@media screen and (min-width: #{$tablet-width}) {
-				flex: 4;
-				max-width: 90%;
-				padding-top: $main-vertical-separation;
-				padding-right: $main-vertical-separation;
+			@include if-tablet-or-desktop {
+				margin-bottom: 20px;
 			}
 			.summary-text {
 				text-align: justify;
@@ -96,9 +91,12 @@
 				box-sizing: border-box;
 				background-color: $secondary-background-color;
 				border: 1px solid $other-border-color; //padding-bottom: $main-vertical-separation;
-				//max-height: 230px;
 				max-width: 720px;
 				line-height: $inter-line-space; // interlineado
+				@include if-tablet-or-desktop {
+					width: 80%;
+					max-width: 80%;
+				}
 			}
 		}
 
@@ -110,74 +108,70 @@
 		}
 
 		.article-extras {
+			display: flex;
+			flex-direction: column;
 			flex: 1;
 			box-sizing: border-box; // The default value is "content-box"
-			width: 75%;
-			margin: 0 auto; // No es necesario !!
-			//padding-left: 15%;
-			//padding-right: 15%;
+			width: 100%;
+			//margin: 0 auto; // No es necesario !!
 			padding: $main-vertical-separation+10 $main-vertical-separation;
 			@media screen and (min-width: #{$tablet-width}) {
-				flex: 1;
-				padding-left: 30px;
+				margin-right: 20px;
 			}
 			.date-of-publication {
 				display: block; // Las clases de "hint.css" cambian el valor de esta propiedad, lo cual impedía centrarlo
 				width: 70%;
-				margin: 0 auto;
-				margin-bottom: 2 * $main-vertical-separation;
+				margin: $main-vertical-separation auto;
 				text-align: center;
-				background-color: $main-button-color; //$secondary-background-color;
+				background-color: $main-button-color;
 				padding: 5px;
 				border-radius: 15px;
+				@include if-tablet-or-desktop {
+					width: 160px; 
+				}
 			}
 			.like-me-button-div {
 				font-size: 15px;
 				color: $main-on-button-text-color;
-				//background-color: $main-text-color; // green;
-				//background-color: white;
 				width: 50%;
 				background-color: $main-button-color;
-				//margin: $main-vertical-separation;
-				//padding-bottom: $main-vertical-separation;
 				padding-top: 10px;
 				padding-bottom: 10px;
 				margin: $main-vertical-separation auto;
-				//border-radius: 5%;
-				// Tenía margin: auto, lo q da 0 de márg. sup. e inferior, por eso se pegaba al siguiente botón
 				text-align: center;
 				cursor: pointer;
 				display: block; // Las clases de font-awesome/hint.css cambian el valor de esta propiedad, lo cual impedía centrarlo
 				.like-me-button {
 					font-size: 15px;
 				}
+				@include if-tablet-or-desktop {
+					width: 160px;
+				}
 			}
 			.number-of-comments {
-				//button {
 				color: $main-on-button-text-color;
 				background-color: $main-button-color;
-				//padding-bottom: 50px; //$main-vertical-separation;
 				width: 50%;
-				margin: 0 auto; // "inherit" doesn't do the same thing !!
-				//box-sizing: border-box;
+				margin: $main-vertical-separation auto; // "inherit" doesn't do the same thing !!
 				padding-top: 10px;
 				padding-bottom: 10px;
 				// It's equivalent to "margin: auto" !!
+				margin: $main-vertical-separation auto;
 				text-align: center;
 				cursor: pointer;
 				display: block; // Las clases de "hint.css" cambian el valor de esta propiedad, lo cual impedía centrarlo
 				&:last-child {
 					margin-bottom: 10px; // space between the last button and the pagination system
 				}
-				//}
+				@include if-tablet-or-desktop {
+					width: 160px;
+				}
 			}
 		}
 	}
 }
 
-/*.fa-thumbs-up, .fa-thumbs-down {
-	padding-right: 5px;
-} */
+/**************** Unused classes ***************/
 // "I like" feature
 .you-like {
 	background-color: red;
@@ -188,7 +182,7 @@
 /************************************************/
 
 .pagination {
-	//display: inline-block;    // No hace nada, creo
+	//display: inline-block;    // No hace nada
 	text-align: center;
 	ul {
 		li {
@@ -200,18 +194,15 @@
 				border-top-color: $navigation-hover-color;
 				padding-left: 4%;
 				padding-right: 4%;
-				//$navigation-hover-color: #494949;
 			}
 			a {
 				color: $main-navigation-color;
-				//&:hover {
-				//	color: $navigation-hover-color;
-				//} // TODO ---> change this color on hovering the list element
 			}
 		}
 	}
 }
 
+/**************** Unused classes ***************/
 .pagination-active-li {
 	transform: scaleX(1.5);
 	border-top: 1px solid red; //$main-navigation-color;
@@ -224,3 +215,4 @@
 .pagination-active-a {
 	color: red; //$navigation-hover-color;
 }
+/************************************************/
