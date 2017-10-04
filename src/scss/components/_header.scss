@@ -15,7 +15,7 @@
 		display: flex;
 		flex-direction: column;
 		width: 90%;
-		margin: 0 auto; // Important !!
+		margin: 0 auto; 
 		.logo-image img {
 			max-width: 95%;
 			height: 45.5px;
@@ -38,7 +38,7 @@
 				width: 70%;
 				margin: 5px auto;
 				height: 40px;
-				background-color: $main-background-color; //border-radius: 15%;
+				background-color: $main-background-color; 
 				transition: width 0.4s ease-in-out;
 			}
 		} //End of #search-box
@@ -47,7 +47,6 @@
 			flex-flow: row nowrap;
 			justify-content: space-around;
 			margin: auto;
-			//align-items: baseline;
 			width: 70%;
 			height: 35px;
 			//@include if-tablet-or-desktop {
@@ -64,9 +63,6 @@
 			#openmenu {
 				display: inline-block; //block;
 				text-align: center;
-				//margin-right: 60%; //40px;
-				//margin-left: 25%; //55%; //40px;
-				//padding-bottom: 20px;
 				width: 35px;
 				height: 35px;
 				background-color: $main-button-color;
@@ -106,7 +102,7 @@
 		display: none;
 		padding: 20px;
 		li {
-			padding: 1em; /*   IMP. --> para separar los elementos del menú */
+			padding: 1em; 
 			&:hover {
 				transform: scaleY(1.4);
 				background-color: $main-text-color;
@@ -136,7 +132,6 @@
 		padding: 20px;
 		ul {
 			margin-left: 6%;
-			//text-align: center;
 			a {
 				padding: 10px;
 				color: $main-menu-color;
@@ -148,7 +143,7 @@
 				display: inline;
 				padding-right: 4%; //10px;
 			}
-			padding-left: 200px; //width: 100%;
+			padding-left: 200px; 
 			transition: all 0.5s linear;
 			overflow: hidden;
 			a:hover {
@@ -169,7 +164,6 @@
 	}
 	.categories-label {
 		display: block;
-		//margin: 0 auto;
 		text-align: center;
 		font-weight: bold;
 		font-size: 17px;

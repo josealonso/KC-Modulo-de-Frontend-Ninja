@@ -1,7 +1,4 @@
 const $ = require('jquery');
-/* Necesito tres cosas:
-CommentsService, UIManager y acceso al formulario
-*/
 
 import UIManager from './UIManager';
 const $textAreaSelector = $('#comment-text');
@@ -20,10 +17,6 @@ export default class CommentFormManager extends UIManager {
 	}
 
 	setupSubmitEventHandler() {
-		// this.element.on("submit", this.validateAndSendData);
-		// Las funciones anónimas con flecha, nuevas en ES6, se diferencian de las f. anónimas tradicionales en que
-		// "this", cuando se usa dentro de la función, hace referencia al objeto fuera del ámbito de la función.
-		// esto antes se solucionaba haciendo "var that = this;"
 		this.element.on('submit', () => {
 			this.validateAndSendData();
 			return false;
@@ -36,11 +29,8 @@ export default class CommentFormManager extends UIManager {
 			numOfWords = $textAreaSelector.val().split(/\s+/).length;
 			console.log('Palabras: ' + numOfWords);
 			if (numOfWords > MAX_NUMBER_OF_WORDS) {
-				//console.log('Stop typing !!');
-				//textAreaSelector.setAttribute('disabled', true);
 				$textAreaSelector.attr('disabled', true);
 			} else {
-				//textAreaSelector.removeAttribute('disabled');
 				$textAreaSelector.removeAttr('disabled');
 				return;
 			}
@@ -48,7 +38,6 @@ export default class CommentFormManager extends UIManager {
 	}
 
 	validateAndSendData() {
-		//console.log('validAndSendData', this);
 		if (this.isValid()) {
 			this.send();
 		}
@@ -56,13 +45,21 @@ export default class CommentFormManager extends UIManager {
 	}
 
 	isValid() {
-		//const inputs = this.element.find('.field');
-		//const textArea = $('#comment-text');
-		const inputs = this.element.find('input, #comment-text');
-		for (let input of inputs) {
-			if (input.checkValidity() == false) {
-				const errorMessage = input.validationMessage;
-				input.focus();
+		const elementsToCheck = this.element.find('input, #comment-text');
+		const numOfWords = $textAreaSelector.val().split(/\s+/).length;
+
+		for (let elementToCheck of elementsToCheck) {
+			if ($(elementToCheck).is('textarea') && numOfWords > MAX_NUMBER_OF_WORDS) {
+				const errorMessage = `Type a maximum of ${MAX_NUMBER_OF_WORDS} words`;
+				$textAreaSelector.val('');
+				elementToCheck.focus();
+				this.setErrorHtml(errorMessage);
+				this.setError();
+				return false;
+			}
+			if ($(elementToCheck).is('input') && elementToCheck.checkValidity() == false) {
+				const errorMessage = elementToCheck.validationMessage;
+				elementToCheck.focus();
 				this.setErrorHtml(errorMessage);
 				this.setError();
 				return false;
@@ -74,24 +71,29 @@ export default class CommentFormManager extends UIManager {
 		return true;
 	}
 
+	basicSanitation(originalText) {
+		// return originalText.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+		return $($.parseHTML(originalText)).text();  
+		// Función de utilidad de jQuery que elimina todas las etiquetas HTML.
+	}
+
 	send() {
 		console.log('Valid data. Sending form.');
+
 		const comment = {
-			author: this.element.find('#name').val() + ' ' + this.element.find('#lastName').val(),
-			email: this.element.find('#email').val(),
-			text: this.element.find('#comment-text').val(),
-			photo: ""
+			author:
+				this.basicSanitation(this.element.find('#name').val()) +
+				' ' +
+				this.basicSanitation(this.element.find('#lastName').val()),
+			email: this.basicSanitation(this.element.find('#email').val()),
+			text: this.basicSanitation(this.element.find('#comment-text').val()),
+			photo: ''
 		};
 		// Emit a "new comment" event (publication)
 		this.commentsService.save(
-			// TODO: reload the list of comments
-
-			// El patrón PubSub permite tener elementos desacoplados, no hay que inyectar dependencias.
-			// El elemento común es el canal de subscripción.
-			// Los suscriptores de un mismo evento son independiente e- sí (asíncrono). Reciben la información publicada.
 			comment,
 			(success) => {
-				PubSub.publish('new-comment', comment); // publish the event reporting the creation of a comment
+				PubSub.publish('new-comment', comment);
 				this.resetForm(); // clear the form
 				this.setIdeal();
 			},
@@ -103,7 +105,7 @@ export default class CommentFormManager extends UIManager {
 	}
 
 	resetForm() {
-		this.element[0].reset(); // "element"" is a jQuery object
+		this.element[0].reset();
 	}
 
 	disableFormControls() {

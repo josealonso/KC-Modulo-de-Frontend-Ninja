@@ -47,14 +47,3 @@
 		@content;
 	}
 }
-/*    @mixin if-tablet {
-        @include if-tablet-portrait() {
-            @content;
-        }
-    }
-
-    @mixin if-desktop {
-        @include if-tablet-landscape() {
-            @content;
-        }
-    }   */

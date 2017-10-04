@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var sass = require('gulp-sass'); 
+var sass = require('gulp-sass');
 var notify = require('gulp-notify');
 var browserSync = require('browser-sync').create();
 var gulpImport = require('gulp-html-import'); // permite usar @import en html // "gulp-copy" es más fácil
@@ -15,12 +15,12 @@ var cssnano = require('cssnano');
 var imagemin = require('gulp-imagemin');
 var responsive = require('gulp-responsive');
 
-gulp.task('default', [ 'html', 'sass', 'img', 'video', 'js', 'fonts' ], function() {
-	// En el arranque, se ejecutan esas 5 tareas antes de "default"
-	//gulp.task("default", ["html", "js"], function () {
+// default task
+gulp.task('default', [ 'html', 'sass', 'img', 'responsive', 'video', 'js', 'fonts' ], function() {
 	browserSync.init({
-		//server: 'dist/' // Cuidado, ponía "src" y luego "./dist"
-        proxy: 'http://127.0.0.1:3100/' // Por defecto, es el puerto 3000
+		// server: './' // Levanta servidor web en carpeta actual
+		proxy: 'http://127.0.0.1:3100/', // actúa como proxy enviando las peticiones a "json-server"
+		browser: 'google chrome'
 	});
 	gulp.watch([ 'src/scss/*.scss', 'src/scss/**/*.scss' ], [ 'sass' ]);
 	gulp.watch([ 'src/js/*.js', 'src/js/**/*.js' ], [ 'js' ]);
@@ -41,12 +41,12 @@ gulp.task('sass', function() {
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('dist/'))
 		.pipe(browserSync.stream());
-	//.pipe(notify("SASS Compilado 🤘🏻")); // muestra notifiación en pantalla
 });
 
 // Fuentes que usa el paquete "font-awesome". Fuente: https://stackoverflow.com/questions/21406538/how-to-use-font-awesome-icons-from-node-modules
 gulp.task('fonts', function() {
-	gulp.src('node_modules/font-awesome/fonts/*').pipe(gulp.dest('dist/fonts'));
+	gulp.src('node_modules/font-awesome/fonts/*')
+	.pipe(gulp.dest('dist/fonts'));
 });
 
 gulp.task('html', function() {
@@ -61,12 +61,17 @@ gulp.task('html', function() {
 		)
 		.pipe(gulp.dest('dist/'))
 		.pipe(browserSync.stream());
-	//.pipe(notify("HTML importado"));
+});
+
+gulp.task('img', function() {
+	gulp.src('src/img/*')
+	.pipe(imagemin())
+	.pipe(gulp.dest('dist/img'));
 });
 
 gulp.task('js', function() {
 	gulp
-		.src([ 'src/js/main.js' ]) 
+		.src([ 'src/js/main.js' ])
 		.pipe(
 			tap(function(file) {
 				// tap nos permite ejecutar una función por cada fichero seleccionado en gulp.src
@@ -94,20 +99,22 @@ gulp.task('js', function() {
 		.pipe(sourcemaps.write('./')) // guarda los sourcemaps en el mismo directorio que el archivo fuente
 		.pipe(gulp.dest('dist/'))
 		.pipe(browserSync.stream()); //recargamos el navegador
-	//.pipe(notify("JS compilado"));
 });
 
 // tarea que optimiza y crea las imágenes responsive
-gulp.task('img', function() {
+gulp.task('responsive', function() {
 	gulp
 		.src('src/img/someone.png')
-		     .pipe(responsive({ // generamos las versiones responsive
-                 'someone.png': [
-                     { width: 150, rename: { suffix: "-150px"}},
-                     { width: 250, rename: { suffix: "-250px"}},
-                     { width: 300, rename: { suffix: "-300px"}}
-                 ]
-             })) 
+		.pipe(
+			responsive({
+				// generamos las versiones responsive
+				'someone.png': [
+					{ width: 150, rename: { suffix: '-150px' } },
+					{ width: 250, rename: { suffix: '-250px' } },
+					{ width: 300, rename: { suffix: '-300px' } }
+				]
+			})
+		)
 		.pipe(imagemin()) // optimizamos el peso de las imágenes
 		.pipe(gulp.dest('dist/img/'));
 });

@@ -28,7 +28,6 @@
 			padding-bottom: $main-vertical-separation;
 		}
 		.details-photo-container {
-			//margin: auto;
 			text-align: center;
 			padding-top: $main-vertical-separation;
 			padding-bottom: $main-vertical-separation;
@@ -43,7 +42,7 @@
 			padding-top: $main-vertical-separation;
 			padding-bottom: $main-vertical-separation;
 			p:first-child {
-				font-size: 24px; //font-weight: bold;
+				font-size: 24px; 
 			}
 			a {
 				text-decoration: underline;
@@ -151,10 +150,10 @@
 			.ui-status {
 				&.error {
 					text-align: center;
-					background-color: red; ///
+					background-color: red; 
 					padding: 10px;
 					border-radius: 5px;
-					color: white; ///
+					color: white; 
 					margin-bottom: 10px;
 					display: none;
 				}

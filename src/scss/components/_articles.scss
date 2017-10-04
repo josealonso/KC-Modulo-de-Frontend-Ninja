@@ -17,7 +17,6 @@
 			min-width: 900px;
 			width: 100%;
 			.central-column {
-				//width: 100%;
 				display: flex;
 				flex-direction: column;
 				margin-right: 0;
@@ -31,15 +30,11 @@
 
 		.article-photo {
 			//  Center aligning (margin: auto;) has no effect if the width property is not set (or set to 100%).
-			/*img {
-                align: middle;
-            }*/
 			flex: 1;
 			text-align: center; // IMPORTANT !!
 			@include if-tablet-or-desktop {
 				padding-left: 15%;
 			}
-			//align-content: center;
 			.article-image {
 				width: 160px;
 				height: 220px;
@@ -51,7 +46,7 @@
 
 		.title-author {
 			text-transform: uppercase;
-			margin: auto; // Important!!
+			margin: auto; 
 			width: 75%;
 			@include if-tablet-or-desktop {
 				padding-top: 20px;
@@ -85,12 +80,12 @@
 			}
 			.summary-text {
 				text-align: justify;
-				margin: auto; // Important!!
+				margin: auto;
 				width: 75%;
 				padding: $main-vertical-separation;
 				box-sizing: border-box;
 				background-color: $secondary-background-color;
-				border: 1px solid $other-border-color; //padding-bottom: $main-vertical-separation;
+				border: 1px solid $other-border-color; 
 				max-width: 720px;
 				line-height: $inter-line-space; // interlineado
 				@include if-tablet-or-desktop {
@@ -113,7 +108,6 @@
 			flex: 1;
 			box-sizing: border-box; // The default value is "content-box"
 			width: 100%;
-			//margin: 0 auto; // No es necesario !!
 			padding: $main-vertical-separation+10 $main-vertical-separation;
 			@media screen and (min-width: #{$tablet-width}) {
 				margin-right: 20px;
@@ -182,7 +176,6 @@
 /************************************************/
 
 .pagination {
-	//display: inline-block;    // No hace nada
 	text-align: center;
 	ul {
 		li {

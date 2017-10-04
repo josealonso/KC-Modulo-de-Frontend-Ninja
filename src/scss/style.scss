@@ -1,7 +1,8 @@
-//@import "font-awesome.css";
 @import "reset";
 @import "node_modules/font-awesome/scss/font-awesome.scss";
-@import "node_modules/hint.css/hint.min.scss";
+// @import "node_modules/hint.css/hint.min.scss";    // or "hint.min.scss" ??
+// @import "hint.min.css";    // Así no funciona. Tiene que ser extensión .scss
+@import "hint.min.scss";  // Copiado de la carpeta node_modules/hint.css  
 
 @import url('https://fonts.googleapis.com/css?family=Bree+Serif|Zilla+Slab');
 @import "variables";

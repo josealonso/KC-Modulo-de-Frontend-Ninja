@@ -1,7 +1,6 @@
 const $ = require('jquery'); /* Esta línea no es obligatoria, de hecho
                                 Browserify solo importa jQuery una vez */
 export default class CommentsService {
-	//export class CommentsService {
 	constructor(url) {
 		this.url = url;
 	}

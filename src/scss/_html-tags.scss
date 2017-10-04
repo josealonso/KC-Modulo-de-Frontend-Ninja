@@ -4,21 +4,9 @@ body {
 	font-size: $font-size-base;
 	color: $main-text-color;
 	overflow-x: hidden;
-	// padding-top: 10px;
-
-	/*@include if-mobile {
-		background: coral;
-	}
-	@include if-tablet {
-		background: gold;
-	}
-
-	@include if-desktop {
-		background: lightblue;
-	}  */
 
 	a {
-		text-decoration: none; // JR
+		text-decoration: none; 
 	}
 
 	form {
